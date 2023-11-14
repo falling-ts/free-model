@@ -243,20 +243,16 @@ def collect_vb_v2(vb_file_name, collect_stride, ignore_tangent=True):
                         vb_slot_bytearray += data[i:i + vb_stride]
                 else:
                     # 这里必须考虑到9684c4091fc9e35a的情况，所以我们需要在这里不读取BLENDWEIGHTS信息，不读取BLENDWEIGHTS必须满足自动补全的情况
-                    blendweights_extract_vb_file = vertex_config["BLENDWEIGHTS"]["extract_vb_file"]
-                    if root_vs == "9684c4091fc9e35a" and vb_stride_slot == blendweights_extract_vb_file and auto_completion_blendweights:
-                        print("读取时，并不读取BLENDWEIGHTS部分")
-                        stride_blendweights = vertex_config["BLENDWEIGHTS"].getint("byte_width")
-                        vb_slot_bytearray += data[i:i + vb_stride - stride_blendweights]
+                    if 'BLENDWEIGHTS' in vertex_config:
+                        blendweights_extract_vb_file = vertex_config["BLENDWEIGHTS"]["extract_vb_file"]
+                        if root_vs == "9684c4091fc9e35a" and vb_stride_slot == blendweights_extract_vb_file and auto_completion_blendweights:
+                            print("读取时，并不读取BLENDWEIGHTS部分")
+                            stride_blendweights = vertex_config["BLENDWEIGHTS"].getint("byte_width")
+                            vb_slot_bytearray += data[i:i + vb_stride - stride_blendweights]
+                        else:
+                            vb_slot_bytearray += data[i:i + vb_stride]
                     else:
-                        # print("在处理不为vb0时,vb_stride,实际值: " + str(vb_stride))
                         vb_slot_bytearray += data[i:i + vb_stride]
-
-                # print("collecting vb_slot:")
-                # print(vb_stride_slot)
-                #
-                # print("collected vb_slot_bytearray: ")
-                # print(len(vb_slot_bytearray))
 
                 # 追加到收集的vb信息中
                 original_vb_slot_bytearray = collect_vb_slot_bytearray_dict.get(vb_stride_slot)
