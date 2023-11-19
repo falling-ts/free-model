@@ -73,10 +73,10 @@ def get_vb_override_str():
 
         # 如果是vb2,还需要控制draw call的数量
         # 这里我们需要两个变量来控制VertexLimitRaise特性，一个是开关用于是否生成，一个是需要skip并重新draw的槽位。
-        # if category == "position":
-        #     vb_override_str = vb_override_str + "handling = skip\n"
-        #     draw_numbers = tmp_config["Ini"]["draw_numbers"]
-        #     vb_override_str = vb_override_str + "draw = " + draw_numbers + ",0\n"
+        if category == "blend":
+            vb_override_str = vb_override_str + "handling = skip\n"
+            draw_numbers = tmp_config["Ini"]["draw_numbers"]
+            vb_override_str = vb_override_str + "draw = " + draw_numbers + ",0\n"
 
         vb_override_str = vb_override_str + "\n"
 
