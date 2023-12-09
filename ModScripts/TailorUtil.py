@@ -93,7 +93,6 @@ class ModelFileData:
                 vertex_data_list = self.element_vertex_data_list_dict.get(calc_element_name)
                 # print(vertex_data_list)
                 vertex_data = vertex_data_list[index_number]
-                # print(vertex_data.aligned_byte_offset)
                 # Reset some values
                 vertex_data.aligned_byte_offset = str(align_byte_offset).encode()
                 vertex_data.calc_element_name = calc_element_name.encode()
@@ -103,7 +102,7 @@ class ModelFileData:
             # print(vertex_data_chunk_str)
 
             self.vertex_data_str = self.vertex_data_str + vertex_data_chunk_str + "\n"
-        # print(self.vertex_data_str)
+        print(self.vertex_data_str)
 
     def save_to_file(self):
         # (1) copy ib file to target folder.

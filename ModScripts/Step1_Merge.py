@@ -58,7 +58,7 @@ def get_first_real_index_from_trianglelist_indices(element_name_test, input_tria
                     data_time_dict[line_vertex_data.data] = 1
                 else:
                     data_time_dict[line_vertex_data.data] = data_time_dict.get(line_vertex_data.data) + 1
-        print("oooooooooo")
+
         print(element_name_vertex_data_dict)
         print(data_time_dict)
 
