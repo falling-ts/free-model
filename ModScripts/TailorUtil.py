@@ -96,13 +96,12 @@ class ModelFileData:
                 # Reset some values
                 vertex_data.aligned_byte_offset = str(align_byte_offset).encode()
                 vertex_data.calc_element_name = calc_element_name.encode()
-
                 vertex_data_chunk_str = vertex_data_chunk_str + vertex_data.__str__().decode()
                 align_byte_offset = align_byte_offset + vertex_config[calc_element_name].getint("byte_width")
             # print(vertex_data_chunk_str)
 
             self.vertex_data_str = self.vertex_data_str + vertex_data_chunk_str + "\n"
-        print(self.vertex_data_str)
+        # print(self.vertex_data_str)
 
     def save_to_file(self):
         # (1) copy ib file to target folder.
