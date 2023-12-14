@@ -68,7 +68,7 @@ def get_first_real_index_from_trianglelist_indices(element_name_test, input_tria
             if data_time_dict.get(data) == 1:
                 real_element_list.append(element_name)
 
-            if data_time_dict.get(data) == 2 and element_name.startswith(b"TEXCOORD"):
+            if element_name.startswith(b"TEXCOORD"):
                 real_element_list.append(element_name)
 
         # print(real_element_list)
