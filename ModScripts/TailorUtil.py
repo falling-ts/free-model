@@ -401,7 +401,7 @@ def get_vertex_data_list(index, element_name, convert_normal=False):
             # only add element_name
             vertex_data = VertexData(line)
 
-            if convert_normal and element_name == "NORMAL":
+            if convert_normal and element_name == "NORMAL" and vertex_data.element_name == b'NORMAL':
                 """
                 In UE4 we got a Normal are 4D problem when import into blender use DarkStarSword's script.
                 so here we try to remove the last one,because it seems all value is 1
