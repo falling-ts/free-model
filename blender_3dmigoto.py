@@ -1693,7 +1693,7 @@ class Export3DMigoto(bpy.types.Operator, ExportHelper):
     bl_idname = "export_mesh.migoto"
     bl_label = "Export 3DMigoto Vertex & Index Buffers"
 
-    filename_ext = '.vb'
+    filename_ext = '.vb0'
     filter_glob: StringProperty(
             default='*.vb*',
             options={'HIDDEN'},
